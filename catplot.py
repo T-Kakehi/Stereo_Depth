@@ -24,8 +24,8 @@ def motion(event):
             cut_point = int(y)
         plt.draw()
 
-print("What a name of input file?")
-file_name = input()
+print("What is the name of the file to be loaded?")
+file_name = input("File name: ")
 with open(str(file_name+'.csv')) as f:
     temp = []
     reader = csv.reader(f,quoting=csv.QUOTE_NONNUMERIC)
@@ -46,13 +46,13 @@ ax2 = fig.add_subplot(2,2,2)
 plt.connect('motion_notify_event', motion)
 
 
-print("How many cut point?\n1: y-z\n2: x-z\n3: x-y")
-select = int(input())
+print("Which area to separate?\n1: y-z\n2: x-z\n3: x-y")
+select = int(input("> "))
 
 flag = True
 while flag:
-    print("How many cut "+DIRECTION[select-1]+" point?\nx: "+str(min(temp[select-1]))+" ~ "+str(max(temp[select-1])))
-    cut_point = int(input())
+    print("How many separete "+DIRECTION[select-1]+" point?\nx: "+str(min(temp[select-1]))+" ~ "+str(max(temp[select-1])))
+    cut_point = int(input("> "))
     if min(temp[select-1]) <= cut_point <= max(temp[select-1]):
         flag = False
 
@@ -77,7 +77,8 @@ while True:
         plot1 = scat_plot(ax1, temp, 2, 1)
         line = ax1.axvline(cut_point, color="red")
         plot2 = scat_plot(ax2, result, 0, 1)
-
+    
+    fig.tight_layout()
     plt.pause(0.1)
     ax1.clear()
     ax2.clear()
