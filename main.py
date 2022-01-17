@@ -83,7 +83,7 @@ while w < rewidth:
                 if not (depth[w,h] == 0):
                     x.append(h)
                     y.append(rewidth-w)
-                    z.append(depth[w,h])
+                    z.append(int(depth[w,h]))
                     # print(w,h,depth[w,h])
             h += 1
         w += 1
