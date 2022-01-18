@@ -88,9 +88,8 @@ while w < rewidth:
             h += 1
         w += 1
 
-# print("What a name of output file?")
-# file_name = input()
-file_name = "full"
+print("What a name of output file?")
+file_name = input("File name: ")
 
 f = open(str(file_name+'.csv'), 'w', newline='')
 data = [x,y,z]
